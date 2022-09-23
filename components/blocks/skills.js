@@ -5,6 +5,7 @@ import { getStrapiMedia } from "../../utils";
 export const Skills = ({ images }) => {
   return (
     <div className="relative space-y-4">
+      Skills
       <div className="flex items-end justify-center lg:justify-start space-x-4">
         {images &&
         images
