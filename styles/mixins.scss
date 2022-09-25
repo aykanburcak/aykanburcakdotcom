@@ -1,0 +1,65 @@
+@mixin list-unstyled {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin boxshadow {
+  -webkit-box-shadow: 3px 3px 3px 0px rgba(184, 185, 187, 1);
+  -moz-box-shadow: 3px 3px 3px 0px rgba(184, 185, 187, 1);
+  box-shadow: 3px 3px 3px 0px rgba(184, 185, 187, 1);
+}
+
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin category-list {
+  @include list-unstyled;
+  li {
+    padding-left: 30px;
+    background: url("images/tick.svg") no-repeat left top 8px;
+  }
+}
+
+@mixin button-radios {
+  position: relative;
+  .form-check-label {
+    border: 1px solid #B9B9B9;
+    border-radius: 4px;
+    padding: 2px 10px;
+  }
+  input {
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    &:checked + .form-check-label {
+      background-color: $red;
+      border-color: $red;
+      color: #fff;
+    }
+  }
+  &.day-selector {
+    .form-check {
+      float: left;
+      margin-bottom: 13px;
+      &:nth-of-type(3), &:nth-of-type(6) {
+        margin-right: 0;
+      }
+    }
+    label {
+      width: 65px;
+      text-align: center;
+    }
+  }
+}
+
+@mixin small-title {
+  color: $dark-gray;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
