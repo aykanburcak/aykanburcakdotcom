@@ -1,0 +1,39 @@
+@import "variables";
+@import "mixins";
+
+.grid {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin: 0 (-$grid-padding);
+}
+
+.grid__column {
+  width: 100%;
+  position: relative;
+  padding: 0 $grid-padding;
+}
+
+@mixin generate-grid($columns, $size: '') {
+  @for $i from 1 through $columns {
+    $width: calc(100% / ( #{$columns} / #{$i} ));
+    @if($size == '') {
+      .col-#{$i}-#{$columns} {
+        width: $width;
+        @include media-below("lg") {
+          width: 50%;
+        }
+				@include media-below("md") {
+					width: 100%;
+				}
+      }
+    }
+    @else {
+      .col-#{$size}-#{$i}-#{$columns} {
+        width: $width;
+      }
+    }
+  }
+}
+@include generate-grid(12);

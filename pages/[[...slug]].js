@@ -24,6 +24,9 @@ export async function getServerSideProps(context) {
         populate: {
           slides: {
             populate: '*'
+          },
+          image_card: {
+            populate: '*'
           }
         },
       },

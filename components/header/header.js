@@ -31,14 +31,16 @@ export default function Header({settings}) {
       )}
 
       {logo && (
-        <div className={styles.header__logo}>
-          <Image
-            src={getStrapiMedia(logo)}
-            alt=""
-            width={55}
-            height={53}
-          />
-        </div>
+        <Link href="/">
+          <div className={styles.header__logo}>
+            <Image
+              src={getStrapiMedia(logo)}
+              alt=""
+              width={55}
+              height={53}
+            />
+          </div>
+        </Link>
       )}
 
       <div className={styles.header__languageSwitcher}>

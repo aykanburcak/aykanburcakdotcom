@@ -11,12 +11,10 @@ export const RichText = ({title, content}) => {
         )}
         {content && (
           <div className={styles.richText__content}>
-            <ReactMarkdown source={content} escapeHtml={false} children={content}/>
+            <ReactMarkdown children={content}/>
           </div>
         )}
       </Container>
     </div>
   )
 }
-
-RichText.defaultProps = {}

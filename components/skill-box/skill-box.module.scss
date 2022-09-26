@@ -1,0 +1,27 @@
+@import "../../styles/variables";
+
+.skillBox {
+  padding: 36px;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0px 26px 45px rgba(0, 0, 0, 0.05);
+  color: $black;
+  border: 5px solid #fff;
+  transition: all ease .3s;
+  height: 100%;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $green;
+  }
+}
+
+.skillBox__image {
+  margin-bottom: 56px;
+}
+
+.skillBox__description {
+  line-height: 1.4;
+  margin-bottom: 0;
+}

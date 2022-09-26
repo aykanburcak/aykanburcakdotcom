@@ -1,6 +1,31 @@
+// Breakpoints
+$breakpoints: (
+  "horizontal": (
+    "xs": 375px,
+    "sm": 500px,
+    "md": 768px,
+    "lg": 960px,
+    "xl": 1200px,
+  ),
+  "vertical": (
+    "xs": 300px,
+    "sm": 450px,
+    "md": 600px,
+    "lg": 750px,
+    "xl": 900px,
+  )
+);
+
+// Colors
 $gray-700: rgba(0, 0, 0, .7);
 $gray-800: rgba(0, 0, 0, .8);
+$lightest-gray: #f9fafc;
 $light-gray: #BBBBBB;
 $dark-gray: #818D96;
 $gray: #00000029;
 $black: #273340;
+$green: #43e97b;
+
+// Grid
+$grid-padding: 15px;
+$wrapper-padding: 15px;
