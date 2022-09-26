@@ -3,5 +3,5 @@ module.exports = {
   images: {
     domains: ['localhost'],
   },
-  distDir: 'out',
+  distDir: 'dist',
 }
