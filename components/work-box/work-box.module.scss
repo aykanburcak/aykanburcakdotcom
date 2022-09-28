@@ -1,0 +1,28 @@
+@import "../../styles/variables";
+
+.workBox {
+  margin-bottom: 44px;
+  transition: all ease .3s;
+  cursor: pointer;
+
+  &:hover {
+    img {
+      transform: rotate(-3deg) scale(1.1);
+    }
+  }
+}
+
+.workBox__image {
+  margin-bottom: 20px;
+  overflow: hidden;
+  max-height: 288px;
+  img {
+    width: 100%;
+    height: auto;
+    transition: all ease .3s;
+  }
+}
+
+.workBox__description {
+  line-height: 1.2;
+}

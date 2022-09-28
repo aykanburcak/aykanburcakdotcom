@@ -1,4 +1,4 @@
-import { RichText, Skills, Slider } from './blocks'
+import { RichText, Skills, Slider, Works } from './blocks'
 
 const getBlockComponent = ({ __component, ...rest }, index) => {
   let Block;
@@ -12,6 +12,9 @@ const getBlockComponent = ({ __component, ...rest }, index) => {
       break;
     case 'blocks.slider':
       Block = Slider;
+      break;
+    case 'blocks.works':
+      Block = Works;
       break;
   }
 
