@@ -1,6 +1,6 @@
 import delve from "delve";
 import {getDataDependencies, fetchApi} from "../services";
-import {getData, getLocalizedParams} from "../utils";
+import {getPageData, getLocalizedParams} from "../utils";
 import Layout from "../layouts/main"
 import BlockManager from "@/components/block-manager";
 import qs from 'qs'
@@ -36,7 +36,8 @@ export async function getServerSideProps(context) {
   });
 
   try {
-    const data = getData(slug, locale);
+    const data = getPageData(slug, locale);
+    console.log(`${data.url}&${query}`);
     const res = await fetchApi(`${data.url}&${query}`);
 
     const pageBlocks = await getDataDependencies(delve(res, "0"));

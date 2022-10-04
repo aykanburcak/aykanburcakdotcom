@@ -4,6 +4,7 @@ import Image from "next/image";
 import {fetchApi} from "../../services";
 import {useEffect, useState} from "react";
 import {getStrapiMedia} from "../../utils";
+import LanguageSwitcher from "@/components/language-switcher/language-switcher";
 
 export default function Header({settings}) {
   const [menu, setMenu] = useState([])
@@ -44,7 +45,7 @@ export default function Header({settings}) {
       )}
 
       <div className={styles.header__languageSwitcher}>
-        <Link href="/en">EN</Link>
+        <LanguageSwitcher />
       </div>
 
     </header>

@@ -1,0 +1,27 @@
+@import "../../styles/variables";
+
+.pageTitle {
+  background: linear-gradient(90deg, #43E97B 2.48%, #38F9D7 97.56%);
+  min-height: 430px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.pageTitle__container {
+  background-color: $white;
+  width: 100%;
+  max-width: 940px;
+  padding: 50px;
+  text-align: center;
+  border-bottom: 1px solid $lightest-gray;
+}
+
+.pageTitle__title {
+  margin-bottom: 0;
+}
+
+.pageTitle__description {
+  margin-top: 30px;
+}

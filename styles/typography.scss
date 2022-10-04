@@ -1,5 +1,6 @@
 @import "mixins";
 
+h1, .h1,
 h2, .h2 {
   font-weight: 800;
   margin-top: 0;
@@ -16,4 +17,12 @@ h4, .h4 {
   font-weight: 800;
   font-size: 24px;
   margin-bottom: 16px;
+  margin-top: 0;
+}
+
+h5, .h5 {
+  font-weight: 800;
+  font-size: 18px;
+  margin-bottom: 16px;
+  margin-top: 0;
 }

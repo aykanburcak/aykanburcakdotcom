@@ -3,12 +3,13 @@ import Image from "next/image";
 import {getStrapiMedia} from "../../utils";
 import { useRouter } from 'next/router'
 import Link from "next/link";
+import {WORKS_SLUG} from "../../constants/slugs";
 
 export default function WorkBox({title, featured_image, details, slug}) {
   const router = useRouter()
 
   return (
-    <div onClick={() => router.push(slug)} className={styles.workBox}>
+    <div onClick={() => router.push(`${WORKS_SLUG[router.locale]}/${slug}`)} className={styles.workBox}>
       {featured_image && (
         <div className={styles.workBox__image}>
           <Image

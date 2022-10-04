@@ -1,0 +1,42 @@
+@import "../../styles/variables";
+
+.workDetail {
+  background-color: $lightest-gray;
+}
+
+.workDetail__container {
+  background-color: $white;
+  max-width: 940px;
+  margin: auto;
+  box-shadow: 0 26px 45px rgb(0 0 0 / 5%);
+  display: flex;
+  gap: 80px;
+  padding: 30px 50px;
+}
+
+.workDetail__info {
+  display: inline-block;
+}
+
+.workDetail__categories {
+  a {
+    color: $black;
+
+    &:not(:last-child):after {
+      content: ', ';
+    }
+  }
+}
+
+.workDetail__siteLink {
+  margin-left: auto;
+}
+
+.workDetail__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  max-width: 940px;
+  margin: auto;
+  background-color: $white;
+}
