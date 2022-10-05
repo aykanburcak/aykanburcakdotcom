@@ -1,60 +1,49 @@
 import styles from './slider.module.scss'
-import Image from "next/image";
-import {getStrapiMedia} from "../../../utils";
 import {useThemeContext} from "../../../context/theme";
 import {useEffect, useRef, useState} from "react";
+import GradientAnimation from "@/components/gradient-animation/gradient-animation";
+import TextTransition, { presets } from "react-text-transition";
+import useTranslation from 'next-translate/useTranslation'
 
 export const Slider = ({slides}) => {
+  const {t} = useTranslation('common')
   const [settings, setSettings] = useThemeContext()
-  const [activeSlide, setActiveSlide] = useState(0)
-  const prevActiveSlide = useRef()
-
+  const [index, setIndex] = useState(0)
+  const slideTexts = slides.map((slide) => {
+    return slide.title
+  })
 
   useEffect(() => {
-    prevActiveSlide.current = activeSlide
-    const interval = setInterval(() => {
-
-      if (prevActiveSlide.current === slides.length -1) {
-        setActiveSlide(0 )
-      }
-
-      if (activeSlide < slides.length - 1) {
-        setActiveSlide((prevActiveSlide)=> prevActiveSlide + 1 )
-      }
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [activeSlide]);
+    const intervalId = setInterval(() =>
+        setIndex(index => index + 1),
+      3000
+    );
+    return () => clearTimeout(intervalId);
+  }, []);
 
   return (
     <div className={styles.slider}>
       {settings.site_name && (
-        <div className={styles.slider__siteName}>
-          {settings.site_name}
-        </div>
+        <>
+          <div className={styles.slider__siteName}>
+            {settings.site_name}
+          </div>
+        </>
       )}
+
+      <GradientAnimation />
 
       {slides && (
         <div className={styles.slider__wrapper}>
-          {
-            slides?.map((slide, index) =>
-              <div key={slide.id}
-                   className={`${styles.slider__single} ${activeSlide === index ? styles.slider__singleEnter : styles.slider__singleLeave}`}>
-                <div className={styles.slider__singleSubtitle}>
-                  {slide.title}
-                </div>
-                {slide.image && (
-                  <div className={styles.slider__singleImage}>
-                    <Image
-                      priority
-                      width={slide.image.data[0].attributes.width}
-                      height={slide.image.data[0].attributes.height}
-                      src={getStrapiMedia(slide.image.data[0].attributes.url)}/>
-                  </div>
-                )}
-              </div>
-            )
-          }
+          <div className={styles.slider__singleSubtitle}>
+            <TextTransition
+              className={styles.slider__singleSubtitleTransition}
+              inline
+              springConfig={presets.gentle}>
+              {slideTexts[index % slideTexts.length]}
+            </TextTransition>
+            {t('developer')}
+          </div>
         </div>
       )}
     </div>

@@ -1,4 +1,5 @@
 {
   "client": "Client",
-  "category": "Category"
+  "category": "Category",
+  "developer": "Developer"
 }
