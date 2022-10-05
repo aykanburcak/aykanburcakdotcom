@@ -28,6 +28,9 @@ export const Slider = ({slides}) => {
           <div className={styles.slider__siteName}>
             {settings.site_name}
           </div>
+          <div className={styles.slider__siteNameOverlay} aria-hidden>
+            {settings.site_name}
+          </div>
         </>
       )}
 
