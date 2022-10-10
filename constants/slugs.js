@@ -12,3 +12,8 @@ export const CATEGORY_SLUG = {
   'tr': 'kategori',
   'en-US': 'category'
 }
+
+export const TAGS_SLUG = {
+  'tr': 'etiket',
+  'en-US': 'tag'
+}

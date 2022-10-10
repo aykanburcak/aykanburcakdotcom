@@ -1,6 +1,6 @@
 import styles from './page-title.module.scss'
 
-export default function PageTitle({title, description}) {
+export default function PageTitle({title, description, boxed}) {
   return (
     <div className={styles.pageTitle}>
       <div className={styles.pageTitle__container}>

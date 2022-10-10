@@ -1,0 +1,22 @@
+@import "../../styles/variables";
+
+.tags {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-2 0;
+  gap: $space-1;
+
+  a {
+    background-color: $dark-gray;
+    color: $white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    transition: $base-transition;
+
+    &:hover,
+    &:focus {
+      background-color: $green;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import { RichText, Skills, Slider, Works } from './blocks'
+import PageTitle from "@/components/page-title/page-title";
 
 const getBlockComponent = ({ __component, ...rest }, index) => {
   let Block;
@@ -15,6 +16,9 @@ const getBlockComponent = ({ __component, ...rest }, index) => {
       break;
     case 'blocks.works':
       Block = Works;
+      break;
+    case 'blocks.page-title':
+      Block = PageTitle;
       break;
   }
 

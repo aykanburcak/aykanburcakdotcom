@@ -4,6 +4,7 @@ import {useEffect, useRef, useState} from "react";
 import GradientAnimation from "@/components/gradient-animation/gradient-animation";
 import TextTransition, { presets } from "react-text-transition";
 import useTranslation from 'next-translate/useTranslation'
+import ScrollIcon from '../../../assets/icons/scroll'
 
 export const Slider = ({slides}) => {
   const {t} = useTranslation('common')
@@ -49,6 +50,8 @@ export const Slider = ({slides}) => {
           </div>
         </div>
       )}
+
+      <ScrollIcon className={styles.slider__scrollIndicator} />
     </div>
   )
 }

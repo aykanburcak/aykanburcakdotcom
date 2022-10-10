@@ -1,17 +1,16 @@
 import styles from './works.module.scss'
 import Container from "@/components/container/container";
 import {useEffect, useState} from "react";
-import {fetchApi} from "../../../services";
 import WorkBox from "@/components/work-box/work-box";
+import {fetchWorks} from "../../../services/fetch-works";
 
 export const Works = ({ title }) => {
   const [works, setWorks] = useState([])
 
   useEffect(() => {
-    fetchApi('works?populate=*')
-      .then((res)=> {
-        setWorks(res)
-      })
+    fetchWorks().then((res)=> {
+      setWorks(res)
+    })
   }, [])
 
   return (
