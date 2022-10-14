@@ -6,6 +6,7 @@ import BlockManager from "@/components/block-manager";
 import qs from 'qs'
 
 const Page = ({blocks}) => {
+
   return (
     <>
       <Layout>

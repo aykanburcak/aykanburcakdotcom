@@ -22,7 +22,7 @@ const getBlockComponent = ({ __component, ...rest }, index) => {
       break;
   }
 
-  return Block ? <Block key={`index-${index}`} {...rest} /> : null;
+  return Block ? <Block key={`block-${index}`} {...rest} /> : null;
 };
 
 const BlockManager = ({ blocks }) => {

@@ -1,10 +1,18 @@
 import '@/styles/app.scss'
 import {ThemeProvider} from '/context/theme'
+import {
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query"
+
+const queryClient = new QueryClient()
 
 function App({Component, pageProps}) {
   return (
     <ThemeProvider>
-      <Component {...pageProps} />
+      <QueryClientProvider client={queryClient}>
+        <Component {...pageProps} />
+      </QueryClientProvider>
     </ThemeProvider>
   )
 }

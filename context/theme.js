@@ -3,9 +3,9 @@ import {fetchApi} from "../services";
 
 const Context = createContext();
 
-
 export function ThemeProvider({children}) {
   const [settings, setSettings] = useState([])
+
 
   useEffect(() => {
     fetchApi('site-setting?populate=*')

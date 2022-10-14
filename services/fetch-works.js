@@ -14,8 +14,8 @@ export function fetchWorks(locale) {
       categories: true,
     },
     pagination: {
-      page: 1,
-      pageSize: 10,
+      start: 0,
+      limit: 8,
     },
     locale: locale
   }, {
@@ -44,6 +44,10 @@ export function fetchWorksByCategory(category, locale) {
         }
       },
     },
+    pagination: {
+      start: 0,
+      limit: 8,
+    },
     locale: locale
   }, {
     encodeValuesOnly: true,
@@ -70,6 +74,10 @@ export function fetchWorksByTag(tag, locale) {
           $eq: tag,
         }
       },
+    },
+    pagination: {
+      start: 0,
+      limit: 8,
     },
     locale: locale
   }, {

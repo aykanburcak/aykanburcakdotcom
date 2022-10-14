@@ -42,7 +42,7 @@ export default function WorkDetail({title, details, client, categories, link, ga
 
         {link && (
           <a href={link}
-             className={`${buttonStyles.button} ${buttonStyles.buttonGreen} ${styles.workDetail__siteLink}`}
+             className={`${buttonStyles.button} ${buttonStyles.buttonGreen}`}
              target="_blank">
             Siteye git
           </a>

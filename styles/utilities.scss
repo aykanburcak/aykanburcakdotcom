@@ -1,3 +1,14 @@
+// Typography
 .text-center {
   text-align: center;
+}
+
+@for $i from 1 through 5 {
+  .mt-#{$i} {
+    margin-top: calc(10 * #{$i}px);
+  }
+
+  .mb-#{$i} {
+    margin-top: calc(10 * #{$i}px);
+  }
 }
