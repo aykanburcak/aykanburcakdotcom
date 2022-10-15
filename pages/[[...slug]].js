@@ -40,7 +40,7 @@ export async function getServerSideProps(context) {
     const data = getPageData(slug, locale);
     const res = await fetchApi(`${data.url}&${query}`);
 
-    const pageBlocks = await getDataDependencies(delve(res, "0"));
+    const pageBlocks = await getDataDependencies(delve(res.data, "0"));
 
     return {props: {...pageBlocks}};
   } catch (error) {

@@ -10,7 +10,7 @@ export function ThemeProvider({children}) {
   useEffect(() => {
     fetchApi('site-setting?populate=*')
       .then((res)=> {
-        setSettings(res.attributes)
+        setSettings(res.data.attributes)
       })
   }, [])
 

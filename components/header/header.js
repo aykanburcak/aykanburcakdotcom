@@ -11,7 +11,7 @@ export default function Header({settings}) {
   useEffect(() => {
     fetchApi(`menus/2?populate=*`)
       .then((res) => {
-        setMenu(res.attributes.menu_item)
+        setMenu(res.data.attributes.menu_item)
       })
   }, [])
 

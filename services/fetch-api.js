@@ -14,5 +14,5 @@ export async function fetchApi(parameters) {
     }
   }
 
-  return json.data
+  return json
 }

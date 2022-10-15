@@ -1,7 +1,7 @@
 import styles from './works.module.scss'
 import buttonStyles from '../../button/button.module.scss'
 import Container from "@/components/container/container";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import WorkBox from "@/components/work-box/work-box";
 import {fetchWorks} from "../../../services/fetch-works";
 import Link from "next/link";
@@ -11,7 +11,6 @@ import {useRouter} from 'next/router'
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools"
 
 export const Works = ({ title, button_link, button_label, enable_load_more }) => {
-  const [works, setWorks] = useState([])
   const { ref, inView } = useInView()
   const router = useRouter()
 
@@ -28,21 +27,24 @@ export const Works = ({ title, button_link, button_label, enable_load_more }) =>
     hasPreviousPage,
   } = useInfiniteQuery(
     ['works'],
-    async ({ pageParam = 0 }) => {
+    async ({ pageParam = 1 }) => {
       return await fetchWorks(router.locale, pageParam)
-    },
-    {
-      getPreviousPageParam: (firstPage) => firstPage?.previousId ?? undefined,
-      getNextPageParam: (lastPage) => lastPage?.nextId ?? undefined,
-      staleTime: 120 * 1000,
-    },
+    },{
+      getPreviousPageParam: (page, pages) => page.meta.pagination.page - 1,
+      getNextPageParam: (page, pages) => page.meta.pagination.page === page.meta.pagination.pageCount ? false : page.meta.pagination.page + 1,
+    }
   )
 
   useEffect(() => {
-    if (inView && enable_load_more) {
+    let cancel = false;
+    if (cancel) return;
+    if (inView && enable_load_more && hasNextPage) {
       fetchNextPage()
     }
-  }, [inView])
+    return () => {
+      cancel = true;
+    }
+  }, [inView, hasNextPage, fetchNextPage])
 
   return (
     <div className={styles.works}>
@@ -51,17 +53,17 @@ export const Works = ({ title, button_link, button_label, enable_load_more }) =>
           <h2 className="text-center">{title}</h2>
         )}
 
-        <div>
+        <>
           {status === 'loading' ? (
             <p>Loading...</p>
           ) : status === 'error' ? (
             <span>Error: {error.message}</span>
           ) : (
             <>
-              {data?.pages?.map((page) => (
-                <div key={`page-${page.nextId}`}>
+              {data.pages?.map((page, index) => (
+                <div key={`page-${index}`}>
                   <div className="grid">
-                    {page.map((work) => (
+                    {page.data.map((work) => (
                       <div key={work.id} className="grid__column col-6-12">
                         <WorkBox {...work.attributes} />
                       </div>
@@ -69,23 +71,11 @@ export const Works = ({ title, button_link, button_label, enable_load_more }) =>
                   </div>
                 </div>
               ))}
-              {/*<div>
-                <button
-                  ref={ref}
-                  onClick={() => fetchNextPage()}
-                  disabled={!hasNextPage || isFetchingNextPage}
-                >
-                  {isFetchingNextPage
-                    ? 'Loading more...'
-                    : hasNextPage
-                      ? 'Load Newer'
-                      : 'Nothing more to load'}
-                </button>
-              </div>*/}
+              <div ref={ref} />
             </>
           )}
           {<ReactQueryDevtools initialIsOpen />}
-        </div>
+        </>
 
         {button_link && (
           <div className="text-center mt-3">

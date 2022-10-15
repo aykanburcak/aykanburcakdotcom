@@ -1,7 +1,7 @@
 import qs from 'qs'
 import {fetchApi} from "./";
 
-export function fetchWorks(locale) {
+export function fetchWorks(locale, page) {
 
   const query = qs.stringify({
     populate: {
@@ -14,8 +14,8 @@ export function fetchWorks(locale) {
       categories: true,
     },
     pagination: {
-      start: 0,
-      limit: 8,
+      page: page,
+      pageSize: 8,
     },
     locale: locale
   }, {
