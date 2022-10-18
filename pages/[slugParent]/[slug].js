@@ -33,7 +33,7 @@ export async function getServerSideProps(context) {
 
     if (pageType === 'work') {
       const res = await fetchWorkDetail(data);
-      pageDetails = res[0]?.attributes;
+      pageDetails = res.data[0]?.attributes;
     }
 
     if (pageType === 'post') {
