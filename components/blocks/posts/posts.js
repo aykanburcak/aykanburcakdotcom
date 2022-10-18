@@ -1,16 +1,16 @@
-import styles from './works.module.scss'
+import styles from './posts.module.scss'
 import buttonStyles from '../../button/button.module.scss'
 import Container from "@/components/container/container";
 import {useEffect} from "react";
-import WorkBox from "@/components/work-box/work-box";
-import {fetchWorks} from "../../../services/fetch-works";
+import PostBox from "@/components/post-box/post-box";
+import {fetchPosts} from "../../../services/fetch-posts";
 import Link from "next/link";
 import {useInView} from 'react-intersection-observer'
 import {useInfiniteQuery,} from "@tanstack/react-query"
 import {useRouter} from 'next/router'
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools"
 
-export const Works = ({ title, button_link, button_label, enable_load_more }) => {
+export const Posts = ({ title, button_link, button_label, enable_load_more }) => {
   const { ref, inView } = useInView()
   const router = useRouter()
 
@@ -18,17 +18,12 @@ export const Works = ({ title, button_link, button_label, enable_load_more }) =>
     status,
     data,
     error,
-    isFetching,
-    isFetchingNextPage,
-    isFetchingPreviousPage,
     fetchNextPage,
-    fetchPreviousPage,
     hasNextPage,
-    hasPreviousPage,
   } = useInfiniteQuery(
-    [`works-${router.locale}`],
+    [`posts-${router.locale}`],
     async ({ pageParam = 1 }) => {
-      return await fetchWorks(router.locale, pageParam)
+      return await fetchPosts(router.locale, pageParam)
     },{
       getPreviousPageParam: (page, pages) => page.meta.pagination.page - 1,
       getNextPageParam: (page, pages) => page.meta.pagination.page === page.meta.pagination.pageCount ? false : page.meta.pagination.page + 1,
@@ -47,7 +42,7 @@ export const Works = ({ title, button_link, button_label, enable_load_more }) =>
   }, [inView, hasNextPage, fetchNextPage])
 
   return (
-    <div className={styles.works}>
+    <div className={styles.posts}>
       <Container>
         {title && (
           <h2 className="text-center">{title}</h2>
@@ -63,9 +58,9 @@ export const Works = ({ title, button_link, button_label, enable_load_more }) =>
               {data.pages?.slice(0, enable_load_more ? 99 : 1).map((page, index) => (
                 <div key={`page-${index}`}>
                   <div className="grid">
-                    {page.data.slice(0, enable_load_more ? 99 : 8).map((work) => (
-                      <div key={work.id} className="grid__column col-6-12">
-                        <WorkBox {...work.attributes} />
+                    {page.data.slice(0, enable_load_more ? 99 : 8).map((post) => (
+                      <div key={post.id} className="grid__column col-6-12">
+                        <PostBox {...post.attributes} />
                       </div>
                     ))}
                   </div>

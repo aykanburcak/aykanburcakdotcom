@@ -1,17 +1,20 @@
 import {getWorkData, getPageType} from "../../utils";
 import Layout from "../../layouts/main"
 import WorkDetail from "@/components/pages/work-detail/work-detail";
+import PostDetail from "@/components/pages/post-detail/post-detail";
 import {fetchWorkDetail} from "../../services/fetch-work-detail";
 import {fetchWorksByCategory, fetchWorksByTag} from "../../services/fetch-works";
 import {fetchCategory} from "../../services/fetch-category";
 import Archive from "@/components/archive/archive";
 import {fetchTag} from "../../services/fetch-tag";
+import {fetchPostDetail} from "../../services/fetch-posts";
 
 const Page = ({pageType, pageDetails}) => {
   return (
     <>
       <Layout>
         {pageType === 'work' && <WorkDetail {...pageDetails} />}
+        {pageType === 'post' && <PostDetail {...pageDetails} />}
         {(pageType === 'category' || pageType === 'tag') && <Archive {...pageDetails} />}
       </Layout>
     </>
@@ -31,6 +34,11 @@ export async function getServerSideProps(context) {
     if (pageType === 'work') {
       const res = await fetchWorkDetail(data);
       pageDetails = res[0]?.attributes;
+    }
+
+    if (pageType === 'post') {
+      const res = await fetchPostDetail(slug, locale);
+      pageDetails = res.data[0]?.attributes;
     }
 
     if (pageType === 'category') {

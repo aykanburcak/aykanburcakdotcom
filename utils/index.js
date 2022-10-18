@@ -6,3 +6,4 @@ export * from "./get-localized-params";
 export * from "./get-year";
 export * from "./get-page-type";
 export * from "./gradient";
+export * from "./get-excerpt";
