@@ -7,7 +7,7 @@ import {fetchWorksByCategory, fetchWorksByTag} from "../../services/fetch-works"
 import {fetchCategory} from "../../services/fetch-category";
 import Archive from "@/components/archive/archive";
 import {fetchTag} from "../../services/fetch-tag";
-import {fetchPostDetail} from "../../services/fetch-posts";
+import {fetchPostDetail, fetchPostsByTag} from "../../services/fetch-posts";
 
 const Page = ({pageType, pageDetails}) => {
   return (
@@ -50,9 +50,10 @@ export async function getServerSideProps(context) {
 
     if (pageType === 'tag') {
       pageDetails.works = await fetchWorksByTag(slug, locale)
+      pageDetails.posts = await fetchPostsByTag(slug, locale)
       const tag = await fetchTag(slug, locale)
-      pageDetails.title = tag?.[0]?.attributes.title || null
-      pageDetails.description = tag?.[0]?.attributes.description || null
+      pageDetails.title = tag?.data[0]?.attributes.title || null
+      pageDetails.description = tag?.data[0]?.attributes.description || null
     }
 
 

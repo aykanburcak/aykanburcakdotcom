@@ -1,4 +1,5 @@
 import '@/styles/app.scss'
+import 'react-toastify/dist/ReactToastify.css';
 import {ThemeProvider} from '/context/theme'
 import {
   QueryClient,

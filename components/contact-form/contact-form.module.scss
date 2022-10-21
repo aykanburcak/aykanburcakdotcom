@@ -1,0 +1,42 @@
+@import "./styles/variables";
+@import "./styles/mixins";
+
+.contactForm {
+  max-width: 450px;
+  margin: auto;
+}
+
+.contactForm__formGroup {
+  margin-bottom: $space-2;
+  position: relative;
+}
+
+.contactForm__label {
+  margin-bottom: $space-2;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: $base-transition;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  opacity: 0;
+}
+
+.contactForm__input {
+  border: none;
+  border-bottom: 1px solid $gray-700;
+  width: 100%;
+  padding: $space-1 0;
+
+  &:focus {
+    outline: none;
+    border-color: $green;
+  }
+
+  &:not(:placeholder-shown) + .contactForm__label {
+    color: $green;
+    opacity: 1;
+    top: -12px;
+  }
+}

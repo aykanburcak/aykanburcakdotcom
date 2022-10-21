@@ -1,5 +1,5 @@
 import Header from "@/components/header/header";
-import Footer from "@/components/footer";
+import Footer from "@/components/footer/footer";
 import {useThemeContext} from "../context/theme";
 
 export default function Layout({ children }) {

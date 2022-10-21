@@ -1,5 +1,15 @@
 {
   "client": "Client",
   "category": "Category",
-  "developer": "Developer"
+  "developer": "Developer",
+  "posts": "Posts",
+  "contact": "Contact",
+  "name": "Your name",
+  "email": "Your email address",
+  "subject": "Subject",
+  "message": "Message",
+  "send": "Send",
+  "messageSuccessful": "Your message has been sent successfully",
+  "messageError": "An error occurred while sending your message"
+
 }

@@ -1,5 +1,14 @@
 {
   "client": "Müşteri",
   "category": "Kategori",
-  "developer": "Geliştirici"
+  "developer": "Geliştirici",
+  "posts": "Yazılar",
+  "contact": "İletişim",
+  "name": "Adınız",
+  "email": "E-posta adresiniz",
+  "subject": "Konu",
+  "message": "Mesajınız",
+  "send": "Gönder",
+  "messageSuccessful": "Mesajınız başarıyla gönderildi.",
+  "messageError": "Bir hata oluştu. Lütfen tekrar deneyin."
 }
