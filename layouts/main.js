@@ -3,7 +3,7 @@ import Footer from "@/components/footer/footer";
 import {useThemeContext} from "../context/theme";
 
 export default function Layout({ children }) {
-  const [settings, setSettings] = useThemeContext()
+  const [settings] = useThemeContext()
 
   return (
     <>

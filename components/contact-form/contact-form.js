@@ -6,7 +6,6 @@ import { ToastContainer, toast } from 'react-toastify';
 
 export default function ContactForm() {
   const {t} = useTranslation('common')
-  toast.success(t('messageSuccessful'))
   const [values, setValues] = useState({
     name: '',
     email: '',
