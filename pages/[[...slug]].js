@@ -4,6 +4,7 @@ import {getPageData, getLocalizedParams} from "../utils";
 import Layout from "../layouts/main"
 import BlockManager from "@/components/block-manager";
 import qs from 'qs'
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const Page = ({blocks}) => {
 
@@ -11,6 +12,7 @@ const Page = ({blocks}) => {
     <>
       <Layout>
         <BlockManager blocks={blocks}/>
+        <ReactQueryDevtools initialIsOpen />
       </Layout>
     </>
   )
@@ -32,6 +34,7 @@ export async function getServerSideProps(context) {
         },
       },
     },
+    locale: context.locale
   }, {
     encodeValuesOnly: true, // prettify URL
   });
@@ -39,6 +42,7 @@ export async function getServerSideProps(context) {
   try {
     const data = getPageData(slug, locale);
     const res = await fetchApi(`${data.url}&${query}`);
+    console.log("-> res", res);
 
     const pageBlocks = await getDataDependencies(delve(res.data, "0"));
 

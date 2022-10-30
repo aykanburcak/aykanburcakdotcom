@@ -6,9 +6,8 @@ import PostBox from "@/components/post-box/post-box";
 import {fetchPosts} from "../../../services/fetch-posts";
 import Link from "next/link";
 import {useInView} from 'react-intersection-observer'
-import {useInfiniteQuery,} from "@tanstack/react-query"
+import {useInfiniteQuery} from "@tanstack/react-query"
 import {useRouter} from 'next/router'
-import {ReactQueryDevtools} from "@tanstack/react-query-devtools"
 
 export const Posts = ({ title, button_link, button_label, enable_load_more }) => {
   const { ref, inView } = useInView()
@@ -69,7 +68,6 @@ export const Posts = ({ title, button_link, button_label, enable_load_more }) =>
               <div ref={ref} />
             </>
           )}
-          {<ReactQueryDevtools initialIsOpen />}
         </>
 
         {button_link && (
